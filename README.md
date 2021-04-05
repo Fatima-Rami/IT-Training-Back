@@ -50,10 +50,3 @@ Il peut aussi consulter la localisation des centres, ainsi qu'accéder à un for
 
 Un administrateur peut accéder à la page de connexion pour accéder au dashboard administrateur avec ses éléments de login (email: admin@admin.com, password: 1234). Une fois authentifié, il peut ajouter, consulter, supprimer des formations, sessions ou comptes administrateurs. Ces éléments se mettent à jour en temps réel dans la base de données.
 
-## Collaborateurs ayant participé
-
-- Fatima Rami (<https://github.com/Fatima-Rami>)
-- Ilias Tamedi (<https://github.com/tamedi>)
-- Julien Prod'homme (<https://github.com/juprodho>)  
-  
-Au nom de l'équipe, nous vous remercions pour l'intérêt que vous porterez à ce projet .
