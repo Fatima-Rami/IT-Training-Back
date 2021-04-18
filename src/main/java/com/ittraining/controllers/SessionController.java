@@ -37,7 +37,7 @@ public class SessionController {
 	}
 
 	@GetMapping("{id}")
-	public Session findById(@PathVariable Long id) {
+	public SessionDTO findById(@PathVariable Long id) {
 	return service.findById(id);
     }
 	
@@ -47,8 +47,8 @@ public class SessionController {
 	}
 	
 	@DeleteMapping("{id}")
-	public void deleteById(@PathVariable Long id) {
-		this.service.deleteById(id);
+	public Boolean deleteById(@PathVariable Long id) {
+		return this.service.deleteById(id);
 	}
 	
 }

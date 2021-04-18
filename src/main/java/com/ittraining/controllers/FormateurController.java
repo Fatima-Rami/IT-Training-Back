@@ -32,11 +32,6 @@ public class FormateurController {
 		return service.findByNom(nom);
 	}
 
-	@GetMapping("note/{note}")
-	public List<Formateur> findByNote(@PathVariable int note) {
-		return service.findByNote(note);
-	}
-
 	@GetMapping("{id}")
 	public Formateur findById(@PathVariable Long id) {
 		return service.findById(id);

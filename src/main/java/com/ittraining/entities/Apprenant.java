@@ -5,43 +5,22 @@ package com.ittraining.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author IB
  *
  */
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Entity
 @Table
-public class Apprenant {
+public class Apprenant extends Personne{
 	
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Column(name = "nom")
-	private String nom;
-	
-	@Column(name = "prenom")
-	private String prenom;
-	
-	@Column(name = "adresse")
-	private String adresse;
-	
-	@Column(name = "tel")
-	private String tel;
-	
-	@Column(name = "email", unique = true, nullable = false)
-	private String email;
-	
+	@Column
 	private String password;
 	
-	
-
 }

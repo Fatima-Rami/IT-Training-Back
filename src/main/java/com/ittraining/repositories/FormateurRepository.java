@@ -10,6 +10,4 @@ public interface FormateurRepository extends JpaRepository<Formateur, Long> {
 
 	public List<Formateur> findByNom(String nom);
 
-	public List<Formateur> findByNote(int note);
-
 }

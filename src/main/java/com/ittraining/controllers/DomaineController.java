@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ittraining.dto.DomaineDTO;
 import com.ittraining.entities.Domaine;
 import com.ittraining.services.DomaineService;
 
@@ -30,12 +31,12 @@ public class DomaineController {
 	}
 	
 	@GetMapping("")
-	public List<Domaine> findAll() {
+	public List<DomaineDTO> findAll() {
 		return this.service.findAll();
 	}
 	
 	@GetMapping("{id}")
-	public Domaine findById(@PathVariable Long id) {
+	public DomaineDTO findById(@PathVariable Long id) {
 		return this.service.findById(id);
 	}
 	

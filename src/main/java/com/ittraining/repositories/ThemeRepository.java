@@ -8,9 +8,5 @@ import com.ittraining.entities.Theme;
 
 public interface ThemeRepository extends JpaRepository<Theme, Long> {
 
-	public List <Theme> findByNom(String nom);
-	
-	public List<Theme> findByDescription(String description);
-	
+	public List<Theme> findByLibelle(String libelle);
 }
- 

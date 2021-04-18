@@ -28,10 +28,6 @@ public class FormateurService {
 		return repository.findByNom(nom);
 	}
 
-	public List<Formateur> findByNote(int note) {
-		return repository.findByNote(note);
-	}
-
 	public Formateur findById(Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

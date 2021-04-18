@@ -39,7 +39,7 @@ public class Formation {
 	@JoinColumn(name="theme_id", referencedColumnName = "id")
 	private Theme theme;
 	
-	@OneToMany(mappedBy = "formation", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "formation", cascade = CascadeType.ALL)
 	private List<Session> sessions = new ArrayList<>();
 
 		

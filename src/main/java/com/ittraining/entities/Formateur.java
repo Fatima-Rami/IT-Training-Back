@@ -14,8 +14,6 @@ import javax.persistence.Table;
 @Table(name = "formateurs")
 public class Formateur {
 	
-	
-		
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Long id;

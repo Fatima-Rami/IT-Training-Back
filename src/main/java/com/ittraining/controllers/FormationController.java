@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,12 +45,17 @@ public class FormationController {
 
 	@GetMapping("{id}")
 	public FormationDTO findById(@PathVariable Long id) {
-		return service.findByIdToDTO(id);
+		return service.findByIdDTO(id);
+	}
+	
+	@PutMapping("{id}")
+	public Boolean update(@RequestBody Formation formation, @PathVariable Long id) {
+		return this.service.update(formation, id);
 	}
 
 	@DeleteMapping("{id}")
-	public void deleteById(@PathVariable Long id) {
-		this.service.deleteById(id);
+	public Boolean deleteById(@PathVariable Long id) {
+		return this.service.deleteById(id);
 	}
 	
 	

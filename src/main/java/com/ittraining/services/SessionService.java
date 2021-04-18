@@ -45,24 +45,22 @@ public class SessionService {
 				.collect(Collectors.toList());
 	}
 
-	public Session findById(Long id) {
-		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-	}
-
-	
-	public SessionDTO findByIdToDTO(Long id) {
-		Session session = this.findById(id);
+	public SessionDTO findById(Long id) {
+		Session session = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		SessionDTO sessionDto = new SessionDTO();
 		sessionDto.setId(session.getId());
 		String dateDebut = ConvertionDate.convertDateToString(session.getDate_debut());
 		String dateFin = ConvertionDate.convertDateToString(session.getDate_fin());
-		
 		sessionDto.setDateDebut(dateDebut);
 		sessionDto.setDateFin(dateFin);
-		sessionDto.setPrix(session.getPrix());
 		sessionDto.setLieu(session.getLieu());
+		sessionDto.setPrix(session.getPrix());
+		sessionDto.setStatus(session.getStatus());
+		FormationDTO formationDto = formationService.convertToDto(session.getFormation());
+		sessionDto.setFormation(formationDto);
 		return sessionDto;
 	}
+
 	
 	public List<SessionDTO> findByStatus(String statusInput) {
 		return this.repository.findByStatus(statusInput).stream().map(this::convertToSessionDto)
@@ -94,15 +92,19 @@ public class SessionService {
 		}
 	}
 	
-	public void deleteById(Long id) {
+	public Boolean deleteById(Long id) {
 		Optional<Session> sessionOptional = this.repository.findById(id);
-		if (sessionOptional.isPresent()) 
+		if (sessionOptional.isPresent()) {
 			this.repository.deleteById(id);
+			return true;
+		} else {
+			return false;
+		}		
 	}
 	
 	private SessionDTO convertToSessionDto(Session session) {
 		SessionDTO sessionDto = new SessionDTO();
-		sessionDto.setId(session.getId());
+		sessionDto.setId(session.getId());			
 		String dateDebut = ConvertionDate.convertDateToString(session.getDate_debut());
 		String dateFin = ConvertionDate.convertDateToString(session.getDate_fin());
 		

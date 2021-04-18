@@ -36,24 +36,36 @@ public class FormationService {
 	}
 
 
-	public Formation findById(Long id) {
-		return repository.findById(id)
+	public FormationDTO findByIdDTO(Long id) {
+		Formation formation = repository.findById(id)
 				.orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+		FormationDTO formationDto = new FormationDTO();
+		formationDto.setId(formation.getId());
+		formationDto.setTitre(formation.getTitre());
+		formationDto.setDescription(formation.getDescription());
+		return formationDto;
 	}
 	
-	public FormationDTO findByIdToDTO(Long id) {
-		Formation formation = this.findById(id);
-		if(formation!=null) {
-			return this.convertToDto(formation);
+	public Boolean update(Formation formation, Long id) {
+		Optional<Formation> formationOptional = this.repository.findById(id);
+		if(formationOptional.isPresent()) {
+			formation.setId(id);
+			this.repository.save(formation);
+			return true;
 		} else {
-			return null;
-		}		
+			return false;
+		}
 	}
+	
 
-	public void deleteById(Long id) {
+	public Boolean deleteById(Long id) {
 		Optional<Formation> adminFound = this.repository.findById(id);
-		if (adminFound.isPresent()) 
+		if (adminFound.isPresent()) {
 			this.repository.deleteById(id);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public FormationDTO convertToDto(Formation formation) {

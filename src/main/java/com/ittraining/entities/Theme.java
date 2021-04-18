@@ -21,15 +21,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table
+@Table(name = "theme")
 public class Theme {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name="nom")
-	private String nom;
+	@Column(name="libelle")
+	private String libelle;
 	
 	@Column(name="description")
 	private String description;
@@ -38,7 +38,7 @@ public class Theme {
 	@JoinColumn(name="domaine_id", referencedColumnName = "id")
 	private Domaine domaine;
 	
-	@OneToMany(mappedBy = "theme", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "theme", cascade = CascadeType.ALL)
 	private List<Formation> formations = new ArrayList<>();
 
 }
