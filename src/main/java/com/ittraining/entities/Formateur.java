@@ -12,14 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "formateurs")
-public class Formateur {
-	
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		private Long id;
-		
-		@Column(name = "nom")
-		private String nom;
+public class Formateur extends Personne{
 
 		@Column(name = "note")
 		private int note;
@@ -28,22 +21,6 @@ public class Formateur {
 		@JoinTable(
 				joinColumns = @JoinColumn(name = "formateur_id"),
 				inverseJoinColumns = @JoinColumn(name="test_formateur_id"))
-
-		public Long getId() {
-			return id;
-		}
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
-		public String getNom() {
-			return nom;
-		}
-
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
 
 		public int getNote() {
 			return note;

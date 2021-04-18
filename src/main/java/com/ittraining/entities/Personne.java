@@ -28,8 +28,5 @@ public abstract class Personne {
 	
 	@Column
 	private String telephone;
-	
-	@Column
-	private Adresse adresse;
 
 }

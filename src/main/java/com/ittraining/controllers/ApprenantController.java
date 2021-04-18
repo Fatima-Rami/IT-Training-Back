@@ -29,15 +29,10 @@ public class ApprenantController {
 		return service.save(entity);
 	}
 
-
 	@GetMapping("")
 	public List<Apprenant> findAll() {
 		return service.findAll();
 	}
-
-	
-	
-
 	
     @GetMapping("{id}")
 	public Apprenant findById(@PathVariable Long id) {

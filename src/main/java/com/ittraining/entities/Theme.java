@@ -31,7 +31,7 @@ public class Theme {
 	@Column(name="libelle")
 	private String libelle;
 	
-	@Column(name="description")
+	@Column(name="description", length = 1000)
 	private String description;
 	
 	@ManyToOne
